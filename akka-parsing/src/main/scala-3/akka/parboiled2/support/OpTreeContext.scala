@@ -413,6 +413,7 @@ class OpTreeContext(parser: Expr[Parser])(using Quotes) {
         // do a beta reduction, using the parameter definitions as stubs for variables
         // that hold values popped from the stack
         block(popToVals(args), rewrite(body)).asExprOf[Boolean]
+      case s@Select(This(_),_) => '{ true } // TODO: Well this is probably wrong? I Have No Idea what to do with this thing
     }
   }
 
